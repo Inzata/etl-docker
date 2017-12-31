@@ -7,10 +7,14 @@ RUN yum install -y yum-plugin-ovl
 
 RUN yum install -y epel-release && yum clean all
 
-RUN yum install -y yum-utils wget && \
+RUN yum install -y yum-utils wget perl-HTTP-DAV && \
 	wget https://repo.inzata.com/etl/el7/inzataetl-5.x.repo -O/etc/yum.repos.d/inzataetl-5.x.repo && \
 	yum clean all && \
 	yum install -y inzata-etlp
+
+# we needed the perl-HTTP-DAV just because of dependencies...
+
+RUN yum remove -y perl-HTTP-DAV
 
 ADD bootstrap.sh /etc/bootstrap.sh
 RUN chown root:root /etc/bootstrap.sh && \
