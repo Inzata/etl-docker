@@ -5,6 +5,8 @@ RUN yum install -y yum-plugin-ovl
 
 # Inzata ETL
 
+RUN yum install -y https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel-7-x86_64/pgdg-centos95-9.5-3.noarch.rpm
+
 RUN yum install -y epel-release && yum clean all
 
 RUN yum install -y yum-utils wget perl-HTTP-DAV && \
