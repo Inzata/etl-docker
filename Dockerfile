@@ -10,9 +10,10 @@ RUN yum install -y https://download.postgresql.org/pub/repos/yum/9.5/redhat/rhel
 RUN yum install -y epel-release && yum clean all
 
 RUN yum install -y yum-utils wget perl-HTTP-DAV && \
-	wget https://repo.inzata.com/etl/el7/inzataetl-5.x.repo -O/etc/yum.repos.d/inzataetl-5.x.repo && \
+	wget https://etl.inzata.com/repos/el7/inzataetl-5.x.repo -O/etc/yum.repos.d/inzataetl-5.x.repo && \
+	yum install -y inzata-etlp && \
 	yum clean all && \
-	yum install -y inzata-etlp
+	rm -rf /var/cache/yum	
 
 # we needed the perl-HTTP-DAV just because of dependencies...
 
